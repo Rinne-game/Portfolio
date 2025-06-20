@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ポートフォリオ(Web版)</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.0/css/all.css" />
+    <link rel="stylesheet" href="style_button.css">
+    <script src="Data_Load.js"></script>
+</head>
+
+<body bgcolor="#fef9e7">
+    <h2><a href="index_2.html"  class="page">ポートフォリオ(Web版)</a></h2>
+    <span class="button_line001">
+        <a href="index.html"><i class="fa-solid fa-circle-user"></i>自己紹介/ホーム</a>
+        <a href="index_2.html?Dep=Game"><i class="fa-solid fa-gamepad"></i>ゲーム部門<span id="Game"></span></a>
+        <a href="index_2.html?Dep=Web"><i class="fa-solid fa-desktop"></i>Webページ部門<span id="Web"></span></a>
+        <a href="index_2.html?Dep=Programing"><i class="fa-solid fa-laptop-code"></i>プログラミング部門<span
+                id="Programing"></span></a>
+        <a href="index_2.html?Dep=Other"><i class="fa-solid fa-question"></i>その他<span id="Other"></span></a>
+        <a><i class="fa-solid fa-lock"></i><!-- <i class="fa-solid fa-file-pdf"></i>-->PDF版(準備中)</a>
+    </span>
+    <!-- <i class="fa-solid fa-code"></i> -->
+    <div>
+        <h1 class="header">作品紹介<span id="Dep"></span></h1>
+        <div id="Dep_main"></div>
+    </div>
+    <div id="content">読み込み中...</div>
+
+    <!-- Markdown変換ライブラリ -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        window.onload = function () {
+            //
+            categories.forEach((id, index) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = `(${Loadi(index)})`;
+                }
+            });
+        };
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        const contentDiv = document.getElementById('content');
+
+        if (!id) {
+            contentDiv.textContent = 'IDが指定されていません。';
+        } else {
+            fetch(`post/${id}/${id}.md`)
+                .then(res => {
+                    if (!res.ok) throw new Error('ファイルが見つかりません');
+                    return res.text();
+                })
+                .then(markdown => {
+                    contentDiv.innerHTML = marked.parse(markdown);
+                })
+                .catch(err => {
+                    contentDiv.textContent = '詳細の読み込みに失敗しました。';
+                    console.log(err);
+                });
+        }
+    </script>
+</body>
+
+</html>

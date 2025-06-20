@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>ポートフォリオ(Web版)</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.0/css/all.css" />
+    <link rel="stylesheet" href="style_button.css">
+    <script src="Data_Load.js"></script>
+</head>
+<!-- bgcolor="#ffff00" -->
+<!-- <span class="button_line001">
+</span> -->
+
+<body bgcolor="#fef9e7">
+    <h2><a href="index_2.html" class="page">ポートフォリオ(Web版)</a></h2>
+    <span class="button_line001">
+        <a href="index.html"><i class="fa-solid fa-circle-user"></i>自己紹介/ホーム</a>
+        <a href="index_2.html?Dep=Game"><i class="fa-solid fa-gamepad"></i>ゲーム部門<span id="Game"></span></a>
+        <a href="index_2.html?Dep=Web"><i class="fa-solid fa-desktop"></i>Webページ部門<span id="Web"></span></a>
+        <a href="index_2.html?Dep=Programing"><i class="fa-solid fa-laptop-code"></i>プログラミング部門<span
+                id="Programing"></span></a>
+        <a href="index_2.html?Dep=Other"><i class="fa-solid fa-question"></i>その他<span id="Other"></span></a>
+        <a><i class="fa-solid fa-lock"></i><!-- <i class="fa-solid fa-file-pdf"></i>-->PDF版(準備中)</a>
+    </span>
+    <!-- <i class="fa-solid fa-code"></i> -->
+    <h1 class="header">自己紹介</h1>
+    <div>
+        <div class="main">
+            <div class="contentA">
+                <div id="icon1">
+                    <img src="icon.png" alt="No Image" id="icon2" /><br>
+                    <span>↑エイプリルフールの時に書いたやつです笑</span>
+                </div>
+            </div>
+            <div class="contentB">
+                <h3>総合情報学部 デジタルゲーム学科 3年</h3>
+                <h1>凛音</h1>
+                <span><i class="fa-solid fa-cookie-bite"></i> <b>生年月日:</b>2004年 8月9日
+                    <!-- <br><i
+                        class="fa-solid fa-envelope"></i><b>E-mail(学業・仕事用):</b>hw23a126@oecu.jp --><br> </span>
+
+                <div class="box27A">
+                    <span class="box-title">SNS</span>
+                    <p><i class="fa-brands fa-square-twitter"></i><a href="https://x.com/August8_Haduki">葉月</a>
+                        <i class="fa-brands fa-square-twitter"></i><a href="https://x.com/Rinne_Musicgame">凛音</a>
+                        <i class="fa-brands fa-square-twitter"></i><a href="https://x.com/hs_oecu">凛音天星</a>
+                        <br>
+                    </p>
+                </div><br>
+                <div class="box27B">
+                    <span class="box-title">Lanugage and Engine</span>
+                    <p><i class="fa-brands fa-unity"></i>UNITY <i class="fa-brands fa-html5"></i>HTML <i
+                            class="fa-brands fa-square-js"></i>Javascript <i class="fa-solid fa-hashtag"></i>C#
+                    </p>
+                </div>
+            </div>
+        </div>　
+        <!-- <h1 class="header">成績</h1> -->
+        <h1 class="header">作品紹介</h1>
+        <table id="Dep_main"></table>
+    </div>
+</body>
+<script>
+
+    const container = document.getElementById('Dep_main');
+    function AAA()
+    {
+        let row = null;
+
+        works.forEach((work, index) => {
+            // 4つごとに新しい<tr>を作成
+            if (index % 4 === 0) {
+                row = document.createElement('tr');
+                container.appendChild(row);
+            }
+
+            const cell = document.createElement('th');
+            cell.innerHTML = `
+        <a href="index_3.html?id=${work.id}" class="page">
+            <img src="${work.thumbnail}" alt="${work.title}"><br/>
+          <span>${work.title}</span><br>
+        </a>
+    `;
+    //<span>${work.description}</span>
+            row.appendChild(cell);
+            if(index>=12)return;
+        });
+    }
+    window.onload = function () {
+        //
+        AAA();
+        categories.forEach((id, index) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = `(${Loadi(index)})`;
+            }
+        });
+    };
+</script>
+
+</html>

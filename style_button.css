@@ -1,0 +1,172 @@
+/* -- css -- */
+a{
+    /* text-decoration: none; */
+    /* color: #000000; */
+}
+.contentA,
+.contentB {
+    width: 50%;
+    /* height: 100px; */
+}
+
+.main {
+    display: flex;
+}
+
+.header {
+    padding: 0.5em;
+    /*文字周りの余白*/
+    color: #494949;
+    /*文字色*/
+    background: #f0ffff;
+    /*背景色*/
+    border-left: solid 5px #ffaf58;
+    /*左線（実線 太さ 色）*/
+    /* #e3ffff */
+}
+.page{
+text-decoration: none;
+color: #000000;
+}
+
+
+.button_line001 {
+    display: flex;
+    gap: 1em;
+    /* ← 全角1文字分の間隔 */
+    flex-wrap: wrap;
+}
+
+.button_line001 a {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 200px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* PDF版 */
+
+.button_line001 a:before {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 0, 0, .1);
+    transform: translateX(-50%);
+}
+
+.button_line001 a:after {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #000;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: transform .3s;
+}
+
+.button_line001 a:hover {
+    opacity: 0.7;
+}
+
+.button_line001 a:hover:after {
+    transform: scale(1, 1);
+}
+
+.box27A {
+    display: inline-block;
+    /* 内容のサイズに合わせる */
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #62c1ce;
+    background: #ffffff;
+    text-align: left;
+}
+
+.box27A .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #62c1ce;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+
+.box27A p {
+    margin: 0;
+    padding: 0;
+}
+
+.box27B {
+    display: inline-block;
+    /* 内容のサイズに合わせる */
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #cea862;
+    background: #ffffff;
+    text-align: left;
+}
+
+.box27B .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #cea862;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+
+.box27B p {
+    margin: 0;
+    padding: 0;
+}
+
+#icon1 {
+    text-align: center;
+}
+
+#icon2 {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+.image-container {
+    width: 40%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
